@@ -1,0 +1,9 @@
+{
+	"name": "d-core-library",
+	"authors": [
+		"Andy Chapman"
+	],
+	"description": "A set of value objects and helper objects useful for d web development using vibe.d.",
+	"copyright": "Copyright © 2017, Andy Chapman",
+	"license": "MIT"
+}
