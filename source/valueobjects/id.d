@@ -1,32 +1,29 @@
 module dcorelib.valueobjects.id;
 
+import dcorelib.valueobjects.constrainedstring;
+
 import std.string;
 import std.conv;
 import std.stdio;
 
-class Id
+class Id : ConstrainedString
 {
-    private string value;
     private ubyte colonPos;
 
     this(string newValue)
     {
-        if ((newValue.length <= 10) || (newValue.length > 45)) {
-            throw new Exception("An Id field may not have a length of less than 10 characters or greater than 45 characters");
+        if (newValue.length <= 10) {
+            throw new Exception("An Id field may not have a length of less than 10 characters");
         }
 
         this.colonPos = to!ubyte(newValue.indexOf(':'));
 
         if (this.colonPos < 1) {
             throw new Exception("An Id field must contain a : in the ID value");
-        }
-
-        value = newValue;
-    }
-
-    override public string toString()
-    {
-        return this.value;
+        }        
+        
+        // Ids must be at most 45 characters long
+        super(newValue, 45, true);
     }
 
     public string getPrefix()
