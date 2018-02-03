@@ -8,7 +8,7 @@ import std.stdio;
 
 class Varchar255Required : ConstrainedString
 {
-    this(string newValue)
+    this(string newValue) @safe
     {
         super(newValue, 255, true);
     }
