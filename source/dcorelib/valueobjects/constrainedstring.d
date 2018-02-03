@@ -10,7 +10,7 @@ abstract class ConstrainedString
 {
     protected string value;
 
-    this(string newValue, in uint maxLength, bool valueRequired)
+    this(string newValue, in uint maxLength, bool valueRequired) @safe
     {
         if (valueRequired && newValue.length == 0) {
             throw new Exception(format("%s must have a value", typeid(this)));
@@ -25,17 +25,17 @@ abstract class ConstrainedString
         this.value = newValue;
     }
 
-    override public string toString()
+    override public string toString() @safe
     {
         return this.value;
     }
 
-    public bool empty()
+    public bool empty() @safe
     {
         return this.value.length == 0;
     }
 
-    public bool notEmpty()
+    public bool notEmpty() @safe
     {
         return this.value.length > 0;
     }    
