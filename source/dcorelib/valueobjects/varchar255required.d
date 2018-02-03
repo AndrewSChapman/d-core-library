@@ -2,14 +2,10 @@ module dcorelib.valueobjects.varchar255required;
 
 import dcorelib.valueobjects.constrainedstring;
 
-import std.string;
-import std.conv;
-import std.stdio;
-
 class Varchar255Required : ConstrainedString
 {
-    this(string newValue) @safe
+    this(string newValue, string identifier) @safe
     {
-        super(newValue, 255, true);
+        super(newValue, 255, true, identifier);
     }
 }

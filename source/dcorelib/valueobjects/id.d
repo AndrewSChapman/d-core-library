@@ -10,7 +10,7 @@ class Id : ConstrainedString
 {
     private ubyte colonPos;
 
-    this(string newValue) @safe
+    this(string newValue, string identifier = "") @safe
     {
         if (newValue.length <= 10) {
             throw new Exception("An Id field may not have a length of less than 10 characters");
@@ -23,7 +23,7 @@ class Id : ConstrainedString
         }        
         
         // Ids must be at most 45 characters long
-        super(newValue, 45, true);
+        super(newValue, 45, true, identifier != "" ? identifier : "id");
     }
 
     public string getPrefix() @safe
