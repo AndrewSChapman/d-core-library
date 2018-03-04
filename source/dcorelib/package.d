@@ -10,4 +10,5 @@ public
     import dcorelib.valueobjects.varchar500;    
     import dcorelib.valueobjects.emailaddress;
     import dcorelib.valueobjects.emailaddressrequired;
+    import dcorelib.enums;
 }
