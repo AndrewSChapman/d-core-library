@@ -20,7 +20,11 @@ class Id : ConstrainedString
 
         if (this.colonPos < 1) {
             throw new Exception("An Id field must contain a : in the ID value");
-        }        
+        }
+
+        if ((newValue.length - this.colonPos) < 10) {
+            throw new Exception("An Id field must contain a suffix of at least 10 characters");
+        }       
         
         // Ids must be at most 45 characters long
         super(newValue, 45, true, identifier != "" ? identifier : "id");
@@ -60,7 +64,14 @@ unittest {
         assert(false, "Was able to create an Id from a value that had no semi colon");
     } catch(Exception e) {
 
-    }  
+    }
+
+    try {
+        auto id = new Id("APPLEORANGEPEARBANANAAPPLEORANGEPEAR:123456789");
+        assert(false, "Was able to create an Id without a sifficient suffix length");
+    } catch(Exception e) {
+
+    }      
 
     /********************** UNIT TESTS THAT SHOULD PASS ********************/
     try {
